@@ -34,9 +34,8 @@ import {
   IconPlus,
   IconTrendingUp,
 } from "@tabler/icons-react"
+import type { ColumnDef, ColumnFiltersState, Row, SortingState, VisibilityState } from "@tanstack/react-table"
 import {
-  ColumnDef,
-  ColumnFiltersState,
   flexRender,
   getCoreRowModel,
   getFacetedRowModel,
@@ -44,10 +43,7 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
-  Row,
-  SortingState,
   useReactTable,
-  VisibilityState,
 } from "@tanstack/react-table"
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
 import { toast } from "sonner"
@@ -56,8 +52,8 @@ import { z } from "zod"
 import { useIsMobile } from "~/hooks/use-mobile"
 import { Badge } from "~/components/ui/badge"
 import { Button } from "~/components/ui/button"
+import type { ChartConfig } from "~/components/ui/chart"
 import {
-  ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
@@ -682,7 +678,7 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
                     tickLine={false}
                     axisLine={false}
                     tickMargin={8}
-                    tickFormatter={(value) => value.slice(0, 3)}
+                    tickFormatter={(value: string) => value.slice(0, 3)}
                     hide
                   />
                   <ChartTooltip
